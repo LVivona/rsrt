@@ -1,0 +1,6 @@
+**/__pycache__
+**/rsrt.egg-info
+
+coverage.xml
+.coverage
+

@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rsrt"
+version = "0.0.1"
+description = "rsrt (Rust Return Types) A Python package for rustacens sugar for return typing"
+readme = "README.md"
+license = { file = "MIT LICENSE" }
+authors = [
+    { name = "Luca Vivona", email = "lucavivona01@gmail.com" }
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+keywords = ["result", "error-handling", "option", "utility"]
+
+dependencies = [
+    "typing-extensions>=4.0; python_version<'3.10'"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "flake8>=6.0",
+    "pytest-cov>=4.0",
+    "mypy>=1.0",
+    "black>=23.0",
+]
+
+[tool.setuptools]
+packages = ["rsrt"]
+package-dir = { "" = "src" }
+
+[tool.setuptools.package-data]
+rsrt = ["*.py"]
+
+
+[tool.mypy]
+python_version = "3.12"
+files = [
+  "src",
+  "tests",
+]
+
+
+[tool.pytest.ini_options]
+addopts = [
+  "--tb=short",                # Short traceback format
+  "--cov=rsrt.option",         # Coverage for option.py
+  "--cov=rsrt.result",         # Coverage for result.py
+  "--cov=tests",               # Ensure test coverage is included
+  "--cov-report=term",         # Show coverage report in terminal
+  "--cov-report=xml",          # Generate XML coverage report
+]
+testpaths = [
+  "tests",                      # Specify the tests folder
+]

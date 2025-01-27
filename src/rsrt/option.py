@@ -3,9 +3,10 @@ from typing import Protocol, TypeVar, Generic, Optional, Iterator
 
 T = TypeVar("T", covariant=True)
 
+
 class Option(Protocol[T]):
     """
-    Represents an optional value, inspired by Rust's `Option` type. 
+    Represents an optional value, inspired by Rust's `Option` type.
     An `Option` can either contain a value (`Some`) or represent the absence of a value (`NoneType`).
 
     This is useful for cases where a return value may or may not be present, avoiding the need for `None` directly.
@@ -85,12 +86,11 @@ class Option(Protocol[T]):
         """
         ...
 
-    
 
 class Some(Generic[T]):
 
     __match_args__ = ("value",)
-    __slots__ = ("_value", )
+    __slots__ = ("_value",)
 
     def __init__(self, value: T):
         self._value = value
@@ -101,13 +101,13 @@ class Some(Generic[T]):
 
     def is_some(self) -> bool:
         """
-        Return Literal True 
+        Return Literal True
         """
         return True
 
     def is_none(self) -> bool:
         """
-        Return Literal False 
+        Return Literal False
         """
         return False
 
@@ -122,13 +122,12 @@ class Some(Generic[T]):
 
     def __repr__(self) -> str:
         return f"Some({str(self._value)})"
-    
+
     def __str__(self) -> str:
         return f"Some({str(self._value)})"
-    
+
     def __hash__(self):
         return hash((True, self._value))
-    
 
 
 class _NoneType:
@@ -147,7 +146,7 @@ class _NoneType:
         Return boolean if Some
         """
         return False
-    
+
     def is_none(self) -> bool:
         """
         Return boolean if None
@@ -180,5 +179,6 @@ class _NoneType:
         Mimic the falsy behavior of `None`
         """
         return False
-    
+
+
 NoneType = _NoneType()

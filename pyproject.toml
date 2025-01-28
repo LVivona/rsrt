@@ -5,12 +5,13 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "rsrt"
 version = "0.0.1"
-description = "rsrt (Rust Return Types) A Python package for rustacens sugar for return typing"
+description = "rsrt (Rust Return Types) A Python package for rustaceans sugar for return typing"
 readme = "README.md"
-license = { file = "MIT LICENSE" }
+license = { text = "MIT" }
 authors = [
     { name = "Luca Vivona", email = "lucavivona01@gmail.com" }
 ]
+requires-python = ">=3.9"  # Added this
 classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
@@ -20,7 +21,6 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 keywords = ["result", "error-handling", "option", "utility"]
-
 dependencies = [
     "typing-extensions>=4.0; python_version<'3.10'"
 ]
@@ -35,8 +35,8 @@ dev = [
 ]
 
 [tool.setuptools]
+package-dir = {"" = "src"}
 packages = ["rsrt"]
-package-dir = { "" = "src" }
 
 [tool.setuptools.package-data]
 rsrt = ["*.py"]

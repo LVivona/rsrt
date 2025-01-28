@@ -1,10 +1,10 @@
 import pytest
 from rsrt import Result, Ok, Err, UnwrapError
 
-def add(x : int ,y : int) -> Result[Ok[int], Err[BaseException]]:
+def add(x : int ,y : int) -> Result[int, BaseException]:
     return Ok(x + y)
 
-def uadd(x : int, y : int) -> Result[Ok[int],Err[AssertionError]]:
+def uadd(x : int, y : int) -> Result[int,AssertionError]:
     try:
         assert x >= 0 and y >= 0, "x and y should be less then 0"
         return Ok(x + y)
